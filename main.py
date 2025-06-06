@@ -29,8 +29,14 @@ class OpenSpace:
         in my_list
         """
         
-        random.shuffle(self.my_list)
-        
+        #random.shuffle(self.my_list)
+        self.people = random.sample(self.my_list, 24)
+        print(self.people)
+        self.remaining_persons = list[set(self.my_list) - set(self.people)]
+
+        if len(self.my_list) >= 25:
+            print(f"Sorry {self.remaining_persons}, the first room is full. You should rent another one.")
+
         return self.my_list
         
     def create_table(self):
@@ -51,17 +57,37 @@ class OpenSpace:
         
 
         # Print the tables
+    def define_table(self):
+        i = 0
+        while len(self.people)>= 4:
+            self.tables[i].append(self.people[0:4])
+            del self.people[0:4]
+            i += 1
+        
         for idx, table in enumerate(self.tables, start=1):
             print(f"Table {idx}: {table}")
-            
-
-        print(self.tables)
 
 
+    def last_ones(self):
+        if len(self.people) == 3:
+            tables[i].append(self.people[0:3]) 
+
+        elif len(self.people) == 2:
+            tables[i].append(self.people[0:2])
         
-test = OpenSpace()
-test.uploaded_file()
-test.random_list()
-print(test.create_table())
+        elif len(self.people) == 1:
+            tables[1].append(self.people[0]) 
 
-
+        return tables #print les listes créées
+        
+   
+    
+            
+    test = OpenSpace()
+"""
+    test.uploaded_file()
+    test.random_list()
+    print(test.create_table())
+    print(test.define_table())
+    print(test.last_ones())
+"""
