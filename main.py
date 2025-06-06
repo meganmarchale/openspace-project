@@ -43,10 +43,7 @@ class OpenSpace:
         
         This method create table according to the way that any table should not have 
         more than 4 persons and should have more than one person
-        """
-        print(self.my_list)
-        self.tables = [[], [], [], [], [], []]
-        print(self.tables)
+        
         i = 0
 
         while self.my_list:
@@ -58,6 +55,10 @@ class OpenSpace:
 
         # Print the tables
     def define_table(self):
+        """
+        Randomly assign tables to people.
+        """
+        self.tables = [[], [], [], [], [], []]
         i = 0
         while len(self.people)>= 4:
             self.tables[i].append(self.people[0:4])
@@ -81,16 +82,14 @@ class OpenSpace:
         elif len(self.people) == 1:
             self.tables[1].append(self.people[0]) 
 
-        return tables #print les listes créées
+        return self.tables #print les listes créées
         
    
-    
-            
-    test = OpenSpace()
-"""
-    test.uploaded_file()
-    test.random_list()
-    print(test.create_table())
-    print(test.define_table())
-    print(test.last_ones())
-"""
+         
+test = OpenSpace()
+test.uploaded_file()
+test.random_list()
+#test.create_table()
+print(test.define_table())
+test.last_ones()
+
