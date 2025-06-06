@@ -1,20 +1,29 @@
 import random
 
 people = ["Hajer", "Charly", "Choti", "Megan", "Moussa", "Yves", "Preeti", "Nadiya", "Aida", "Augustin", "Klebert", "Marc", "Sofia", "Younes", "Kenny", "Floriane", "Jordi", "Alberto", "Fang", "Caterina", "Yassine", "Dragos", "Hanieh", "Mengstu"]
-x = 5 # Number of tables defined for test
+random.shuffle(people)
+print(people)
+
+
+tables = [[],[],[],[],[],[]] # Number of tables defined for test
 
 def define_table(people):
-    if len(people) >= 2:
-        table_1 = random.sample(people, 4)
-        people = [list[set(people) - set(table_1)]] ### Modify "table1 by element of a list created in class tables ??"
-        return f"{table_1} can sit in table 1" #prints a list of 4 persons
+    i = 0
+    while len(people)> 0:
+        tables[i].append(people[0])
+        people.pop(0)
+        if len(tables[i] == 4):
+            continue
+        i += 1
+                
+    else:
+        if len(people) == 3:
+            tables[i].append(people[0,2])
+        elif len(people) == 2:
+            tables[i].append(people[0,1])
+        elif len(people) == 1:
+            tables[i].append(people[0])
 
-#Call the function x times depending on the needs defined ? 
-
-def repeat_define_table(define_table, x):
-    for i in range(x): define_table(people)
-
-repeat_define_table(x, define_table)
+    return tables #print les listes créées
+        
 print(define_table(people))
-
-print(f"If your name appears in this list, you'll have to book another room: {people}")
